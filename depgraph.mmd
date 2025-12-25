@@ -1,0 +1,38 @@
+graph LR
+  length_insert_at:::lemma
+  shift_eq:::lemma
+  shift_gt:::lemma
+  shift_lt:::lemma
+  shift_commute:::lemma
+  lift_type:::lemma
+  subst_lemma:::lemma
+  subject_reduction:::corollary
+  subject_reduction':::theorem
+  canonical_fun:::lemma
+  progress:::lemma
+  progress':::corollary
+  type_soundness:::theorem
+  envlen_fv:::lemma
+  envlen_fv:::isnotused
+  emp_env_closed:::lemma
+  emp_env_closed:::isnotused
+  lift_type --> length_insert_at
+  lift_type --> shift_gt
+  lift_type --> shift_lt
+  subst_lemma --> length_insert_at
+  subst_lemma --> lift_type
+  subst_lemma --> shift_commute
+  subst_lemma --> shift_eq
+  subst_lemma --> shift_gt
+  subst_lemma --> shift_lt
+  subject_reduction --> subst_lemma
+  subject_reduction' --> subject_reduction
+  progress --> canonical_fun
+  progress' --> progress
+  type_soundness --> progress'
+  type_soundness --> subject_reduction'
+  emp_env_closed --> envlen_fv
+classDef lemma stroke:#333,fill:#eee
+classDef corollary stroke:#1f1,fill:#dfd
+classDef theorem stroke:#11f,fill:#ddf
+classDef isnotused fill:#f11
