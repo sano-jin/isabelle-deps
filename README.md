@@ -18,6 +18,17 @@ Each node in the generated graph corresponds to a proof item and is color-coded 
 - corollary: light green
 - **lemma or corollary that no theorem depends on: red**
 
+For example,
+here is the ouput of [STLC.thy](./STLC.thy):
+![](./depgraph.png)
+
+In the generated graph:
+
+- `type_soundness` is highlighted in light blue because it is a theorem.
+- `progress'` and `subject_reduction'` are highlighted in light green because they are corollaries.
+- All other lemmas are shown in light gray, except for `emp_env_closed` and `envlen_fv`.
+- `emp_env_closed` and `envlen_fv` are highlighted in RED because they are NOT used in the proof of any theorem.
+
 ## Usage
 
 ### Requirements
@@ -44,13 +55,3 @@ If you are interested, you may want to take a look at the shell script [gengraph
 ```bash
 bash gengraph.sh STLC.thy
 ```
-
-Ouput:
-![](./depgraph.png)
-
-In the generated graph:
-
-- `type_soundness` is highlighted in light blue because it is a theorem.
-- `progress'` and `subject_reduction'` are highlighted in light green because they are corollaries.
-- All other lemmas are shown in light gray, except for `emp_env_closed` and `envlen_fv`.
-- `emp_env_closed` and `envlen_fv` are highlighted in RED because they are NOT used in the proof of any theorem.
