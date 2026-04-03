@@ -108,7 +108,7 @@ def refs_to_mermaid(refs):
 
     # 頂点出力
     for src, targets in refs.items():
-        lines.append(f"  {src}:::{targets["type"]}")
+        lines.append(f"  {src}:::{targets['type']}")
         if not targets["is_marked"]:
             lines.append(f"  {src}:::isnotused")
 

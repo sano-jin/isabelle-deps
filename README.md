@@ -34,14 +34,13 @@ In the generated graph:
 ### Requirements
 
 - Python 3.12+
-- [Poetry](https://python-poetry.org/) (for installation)
 
 ### Installation
 
 Install the tool using Poetry:
 
 ```bash
-poetry install
+pip install -e .
 ```
 
 After installation, the `isabelle-deps` command will be available.
