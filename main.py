@@ -137,8 +137,7 @@ def refs_to_mermaid(refs):
     return "\n".join(lines)
 
 
-if __name__ == "__main__":
-
+def main():
     if len(sys.argv) != 2:
         print("Usage: python analyze_isabelle.py path/to/file.thy")
         sys.exit(1)
@@ -150,3 +149,7 @@ if __name__ == "__main__":
 
     mermaid_str = refs_to_mermaid(refs)
     print(mermaid_str)
+
+
+if __name__ == "__main__":
+    main()

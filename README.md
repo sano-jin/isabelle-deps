@@ -9,7 +9,7 @@ The script works by heuristically decomposing words using regular expressions.
 It does **not** parse Isabelle syntax and is therefore **not robust**.
 As a result, it may fail or produce incorrect results on some proof scripts.
 
-## Output
+## Demo
 
 Each node in the generated graph corresponds to a proof item and is color-coded as follows:
 
@@ -19,8 +19,8 @@ Each node in the generated graph corresponds to a proof item and is color-coded 
 - **lemma or corollary that no theorem depends on: red**
 
 For example,
-here is the ouput of [STLC.thy](./STLC.thy):
-![](./depgraph.png)
+here is the ouput of [demo/STLC.thy](./demo/STLC.thy):
+![](./demo/depgraph.png)
 
 In the generated graph:
 
@@ -39,7 +39,7 @@ In the generated graph:
 ### Generate a dependency graph
 
 ```bash
-bash gengraph.sh YourProof.thy
+bash scripts/gengraph.sh YourProof.thy
 ```
 
 This command generates the following output:
@@ -48,10 +48,11 @@ This command generates the following output:
 depgraph.png
 ```
 
-If you are interested, you may want to take a look at the shell script [gengraph.sh](./gengraph.sh).
+If you are interested, you may want to take a look at the shell script [scripts/gengraph.sh](./scripts/gengraph.sh).
 
 ### Example
 
 ```bash
-bash gengraph.sh STLC.thy
+cd demo
+bash ../scripts/gengraph.sh STLC.thy
 ```
