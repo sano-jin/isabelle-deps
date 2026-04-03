@@ -33,26 +33,51 @@ In the generated graph:
 
 ### Requirements
 
-- [Poetry](https://python-poetry.org/) (Python dependency management)
-- [mermaid-cli](https://github.com/mermaid-js/mermaid-cli) (for rendering graphs)
+- Python 3.12+
+- [Poetry](https://python-poetry.org/) (for installation)
 
-### Generate a dependency graph
+### Installation
+
+Install the tool using Poetry:
 
 ```bash
-bash scripts/gengraph.sh YourProof.thy
+poetry install
 ```
 
-This command generates the following output:
+After installation, the `isabelle-deps` command will be available.
 
-```text
-depgraph.png
+### Generate Mermaid dependency graph
+
+The primary use of this tool is to generate a dependency graph in Mermaid format from an Isabelle `.thy` file.
+
+```bash
+isabelle-deps YourProof.thy
 ```
 
-If you are interested, you may want to take a look at the shell script [scripts/gengraph.sh](./scripts/gengraph.sh).
+This prints the Mermaid graph to standard output.
+
+You can redirect it to a file:
+
+```bash
+isabelle-deps YourProof.thy > depgraph.mmd
+```
 
 ### Example
 
 ```bash
 cd demo
-bash ../scripts/gengraph.sh STLC.thy
+isabelle-deps STLC.thy > depgraph.mmd
 ```
+
+You can then render the Mermaid file using any Mermaid-compatible tool if needed.
+
+### Notes
+
+- This tool does not perform rendering. It only generates Mermaid text.
+- Rendering (e.g., to PNG/SVG) can be done separately using tools like `mmdc` if desired.
+
+  For example:
+
+  ```bash
+  mmdc -i depgraph.mmd -o depgraph.png -s 10
+  ```
