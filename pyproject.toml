@@ -6,7 +6,7 @@ authors = ["sano <sano@ueda.info.waseda.ac.jp>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.9,<4.0"
 
 
 [build-system]
