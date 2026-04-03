@@ -15,4 +15,4 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry.scripts]
-isabelle-deps = "main:main"
+isabelle-deps = "isabelle_deps.main:main"
