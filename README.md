@@ -14,7 +14,7 @@ This tool analyzes an Isabelle `.thy` file and generates a dependency graph of p
 - Python 3.9+
 - Pip
 
-### Installation
+### Step1. Installation
 
 Install the tool using pip:
 
@@ -26,7 +26,7 @@ pip install -e .
 
 After installation, the `isabelle-deps` command will be available.
 
-### Generate Mermaid dependency graph
+### Step 2. Generate Mermaid dependency graph
 
 The primary use of this tool is to generate a dependency graph in Mermaid format from an Isabelle `.thy` file.
 
