@@ -32,37 +32,42 @@ def analyze_thy(path):
     words_in_proof = {}
     for part in parts:
         m = re.search(r"\b(lemma|theorem|corollary)\s+([A-Za-z0-9_']+)\s*:", part)
-        # m = re.search(
-        #     r"\b(lemma|theorem|corollary)\s+([A-Za-z0-9_']+)\s*(?:\[[^\]]*\])?\s*:",
-        #     part,
-        # )
         if m:
             name = m.group(2)
             # logger.debug(f"name: {name}")
             words_in_proof[name] = {"type": m.group(1), "deps": []}
             # logger.debug(f"- {words_in_proof[name]}")
-            count = 1
+            count = 0  # 証明のネストの深さを表す．
             lines = part.split("\n")
             for line in lines:
                 line = line.strip()
 
-                # 証明判定
+                # proof コマンドにより，証明のネストが一段深くなる．
                 if re.search(r"\bproof\b", line):
                     count += 1
 
-                if re.search(r"\bqed\b", line):
-                    count -= 1
-                    if count == 0:
-                        break
-
-                # 証明中
-                if count > 0:
+                # 証明中ならば，その行のキーワードを words_in_proof に追加する．
+                if count >= 0:
                     ws = re.split(r"[^A-Za-z0-9_']+", line)
                     words_in_proof[name]["deps"].extend(ws)
 
-                # “by” が出て count==1 なら即終了
-                if count == 1 and re.search(r"\bby\b", line):
+                # "by" が出て count==0 ならその証明は完了．
+                if count == 0 and re.search(r"\bby\b", line):
                     break
+
+                # "done" が出て count==0 ならその証明は完了．
+                if count == 0 and re.search(r"\bdone\b", line):
+                    break
+
+                # qed コマンドにより，証明のネストが一段浅くなる．
+                if re.search(r"\bqed\b", line):
+                    count -= 1
+                    # もう証明すべきものが残っていなければ，終了する．
+                    if count == 0:
+                        break
+                if count < 0:
+                    raise ValueError("Internal Error: count must be non-negative")
+
             # print(words_in_proof[name])
 
     for k in words_in_proof:
