@@ -1,13 +1,11 @@
-# isabelle-deps
-
-A dependency analyzer for Isabelle proof files.
+# A dependency analyzer for Isabelle proof files.
 
 This tool analyzes an Isabelle `.thy` file and generates a dependency graph of proofs, rendered as a Mermaid flow diagram.
 
-**Important note:**
-The script works by heuristically decomposing words using regular expressions.
-It does **not** parse Isabelle syntax and is therefore **not robust**.
-As a result, it may fail or produce incorrect results on some proof scripts.
+> [!NOTE]
+> The script works by heuristically decomposing words using regular expressions.
+> It does not parse Isabelle syntax and is therefore not robust.
+> As a result, it may fail or produce incorrect results on some proof scripts.
 
 ## Usage
 
