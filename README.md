@@ -38,7 +38,7 @@ This prints the Mermaid graph to standard output.
 
 ### Example
 
-We have prepared a demo in [demo/](./demo) directory.
+We have prepared a demo in the [demo/](./demo) directory.
 
 ```bash
 cd demo
