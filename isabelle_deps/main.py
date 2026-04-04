@@ -64,6 +64,7 @@ def analyze_thy(path):
                     # もう証明すべきものが残っていなければ，終了する．
                     if count == 0:
                         break
+
                 if count < 0:
                     raise ValueError("Internal Error: count must be non-negative")
 
@@ -96,6 +97,8 @@ def dep_analysis(refs):
 
     for src, targets in refs.items():
         if targets["type"] == "theorem":
+            helper(refs, src)
+        if targets["type"] == "corollary":
             helper(refs, src)
     logging.debug(refs)
     return refs
