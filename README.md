@@ -36,13 +36,9 @@ isabelle-deps YourProof.thy
 
 This prints the Mermaid graph to standard output.
 
-You can redirect it to a file:
-
-```bash
-isabelle-deps YourProof.thy > depgraph.mmd
-```
-
 ### Example
+
+We have prepared a demo in [demo/](./demo) directory.
 
 ```bash
 cd demo
@@ -57,10 +53,10 @@ here is the ouput of [demo/STLC.thy](./demo/STLC.thy):
 
 Each node in the generated graph corresponds to a proof item and is color-coded as follows:
 
-- lemma: light gray
-- theorem: light blue
-- corollary: light green
-- **lemma or corollary that no theorem depends on: red**
+- lemma: light gray.
+- theorem: light blue.
+- corollary: light green.
+- lemma or corollary that no theorem depends on: red.
 
 In the generated graph:
 
