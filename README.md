@@ -72,10 +72,10 @@ In the generated graph:
 ### Notes
 
 - This tool does not perform rendering. It only generates Mermaid text.
-- Rendering (e.g., to PNG/SVG) can be done separately using tools like `mmdc` if desired.
+- Rendering (e.g., to PNG/SVG) can be done separately using tools like [mmdc](https://github.com/mermaid-js/mermaid-cli) if desired.
 
-  For example:
+For example:
 
-  ```bash
-  mmdc -i depgraph.mmd -o depgraph.png -s 10
-  ```
+```bash
+mmdc -i depgraph.mmd -o depgraph.png -s 10
+```

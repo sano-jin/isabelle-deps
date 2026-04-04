@@ -1,13 +1,12 @@
 import re
 import sys
-from collections import defaultdict
 import logging
 
 logger = logging.getLogger(__name__)
 
 # logging.basicConfig(filename="myapp.log", level=logging.DEBUG)
-# logging.basicConfig(level=logging.INFO)
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.DEBUG)
 logger.debug("Started")
 
 
