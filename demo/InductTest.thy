@@ -7,8 +7,8 @@ type_synonym var = nat
 
 datatype exp =
   Var var
-| App "exp" "exp"
-| Lam "exp"
+| App exp exp
+| Lam exp
 
 
 text \<open>
