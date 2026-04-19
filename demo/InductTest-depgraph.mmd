@@ -1,0 +1,14 @@
+graph LR
+  vmap_compose:::lemma
+  helper_lemma_for_the_generalised_lemma:::lemma
+  generalised_lemma_for_shift_down_and_up:::lemma
+  shift_down_and_up_if_less_than_n_notin:::lemma
+  shift_down_and_up_if_0_notin:::theorem
+  generalised_lemma_for_shift_down_and_up --> helper_lemma_for_the_generalised_lemma
+  shift_down_and_up_if_less_than_n_notin --> generalised_lemma_for_shift_down_and_up
+  shift_down_and_up_if_0_notin --> shift_down_and_up_if_less_than_n_notin
+  shift_down_and_up_if_0_notin --> vmap_compose
+classDef lemma stroke:#333,fill:#eee
+classDef corollary stroke:#1f1,fill:#dfd
+classDef theorem stroke:#11f,fill:#ddf
+classDef isnotused fill:#f11
