@@ -30,7 +30,7 @@ Note that this is designed not to change any local variable.
 primrec
   vmap :: "(var => var) => exp => exp"
 where
-  "vmap f (Var xs) = Var (f xs)"
+  "vmap f (Var var) = Var (f var)"
 | "vmap f (App e1 e2) = App (vmap f e1) (vmap f e2)"
 | "vmap f (Lam e) = Lam (vmap (\<lambda>x. if x = 0 then x else (f (x - 1) + 1)) e)"
 
@@ -41,7 +41,7 @@ Composition of free variable replacements.
 lemma vmap_compose:
   "vmap f (vmap g exp) = vmap (f \<circ> g) exp"
 proof (induct exp arbitrary: f g)
-  case (Var x2)
+  case (Var var)
   then show ?case
     by auto
 next
@@ -79,12 +79,12 @@ lemma generalised_lemma_for_shift_down_and_up:
   shows "vmap (\<lambda>x. if k <= x then x - n + n else x) exp = exp"
 using assms
 proof (induct exp arbitrary: n k)
-  case (Var xs)
+  case (Var var)
   then show ?case
     apply auto
     done
 next
-  case (App x1 x2)
+  case (App exp1 exp2)
   then show ?case
     apply auto
     done
