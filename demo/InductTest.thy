@@ -45,7 +45,7 @@ If 0 is not among the free variables of an expression,
 then shifting all variables down and then up again
 does not change the expression.
 
-We now proceed with several auxiliary lemmas.
+To prove this, we first proceed with several auxiliary lemmas.
 \<close>
 
 
