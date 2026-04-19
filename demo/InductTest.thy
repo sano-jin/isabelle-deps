@@ -1,4 +1,4 @@
-chapter\<open>An example showing the use of structural inductions.\<close>
+chapter\<open>An example demonstrating the use of structural induction.\<close>
 
 theory InductTest
 imports Main begin
@@ -13,7 +13,7 @@ datatype exp =
 
 text \<open>
 Free variables of an expression.
-The constructor Lam hides a variable with an index 0 in its sub-expression,
+The constructor Lam binds (hides) the variable with index 0 in its subexpression,
 and all other free variables are shifted down by one.
 \<close>
 primrec FV :: "exp => var set"
@@ -24,8 +24,8 @@ where
 
 
 text \<open>
-Free variable replacement.
-Note that this is designed not to change any local variable.
+Free-variable replacement.
+This operation is designed so that bound variables remain unchanged.
 \<close>
 primrec
   vmap :: "(var => var) => exp => exp"
@@ -36,7 +36,21 @@ where
 
 
 text \<open>
-Composition of free variable replacements.
+Main theorem (to be proven later):
+
+\<^item> If @{term "0 \<notin> FV exp"}, then
+\<^item> @{term "vmap Suc (vmap (\<lambda>x. x - 1) exp) = exp"}.
+
+If 0 is not among the free variables of an expression,
+then shifting all variables down and then up again
+does not change the expression.
+
+We now proceed with several auxiliary lemmas.
+\<close>
+
+
+text \<open>
+Composition of free-variable replacements.
 \<close>
 lemma vmap_compose:
   "vmap f (vmap g exp) = vmap (f \<circ> g) exp"
@@ -61,7 +75,7 @@ qed
 
 
 text \<open>
-A helper lemma...
+A helper lemma.
 \<close>
 lemma helper_lemma_for_the_generalised_lemma:
   assumes "\<forall>x \<in> FV (Lam exp). (k <= x --> n <= x)"
@@ -72,7 +86,7 @@ using Suc_le_D by auto
 
 
 text \<open>
-A ``generalised'' lemma to show the next lemma.
+A generalised lemma used to prove the next result.
 \<close>
 lemma generalised_lemma_for_shift_down_and_up:
   assumes "\<forall>x \<in> FV exp. (k <= x --> n <= x)"
@@ -103,7 +117,7 @@ qed
 
 
 text \<open>
-A slightly generalised lemma to show the final theorem.
+A slightly more general lemma used to prove the final theorem.
 \<close>
 lemma shift_down_and_up_if_less_than_n_notin:
   assumes "\<forall>x \<in> FV exp. n <= x"
@@ -120,9 +134,9 @@ qed
 
 
 text \<open>
-The final theorem.
-If 0 is not in the free variables of an expression,
-then shifting down and up all the variables in the expression
+The main theorem.
+If 0 is not among the free variables of an expression,
+then shifting all variables down and then up again
 does not change the expression.
 \<close>
 theorem shift_down_and_up_if_0_notin:
